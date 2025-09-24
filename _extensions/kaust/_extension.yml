@@ -8,7 +8,7 @@ contributes:
       # template-partials:
       #   - title-slide.html
       theme: [default, kaust.scss]
-      logo: KAUST_Logo.svg
+      logo: KAUST-logo-seed.svg
       title-slide-attributes:
         data-background-image: KAUST-beacon-with-logo.png
         data-background-position: center

@@ -8,7 +8,7 @@ $kaust: (
   sat: (
     pur: #9C6FAE, blu: #5284C4, tur: #00A6AA,
     grn: #C8DE00, yel: #F0B500, org: #F18F00,
-    bla: #131516, mer: b10f2e
+    bla: #131516, mer: #b10f2e
   ),
   satsh: (
     pur: #6D2463, blu: #003B75, tur: #004C59,
@@ -39,37 +39,32 @@ $kaust: (
   @return $val;
 }
 
-/* tiny utilities (optional) */
-@mixin text-kaust($fam, $row: sat)   { color:            kaust($fam, $row); }
-@mixin bg-kaust($fam, $row: sat)     { background-color: kaust($fam, $row); }
-@mixin border-kaust($fam, $row: sat) { border-color:     kaust($fam, $row); }
-
-
-// Fonts
-// @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
-// @import url(https://fonts.googleapis.com/css?family=Roboto:200,200i,300,300i,350,350i,400,400i);
-// @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
-
-// Avenir Next
-@font-face {
-  font-family: 'Avenir Next Variable';
-  src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/2729/AvenirNext_Variable.ttf') format('truetype');
-  font-weight: 100 900;  // minimum weight is 400
+/* example: generate text classes from the map */
+@each $fam, $hex in map-get($kaust, sat) {
+  .text-#{$fam} { color: kaust($fam); }
+  .bg-#{$fam}   { background-color: kaust($fam); }
 }
 
-$font-family-sans-serif: "Avenir Next Variable", sans-serif !default;
+
+// Font (Raleway)
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+// Font (Noto Sans Arabic)
+@import url('https://fonts.cdnfonts.com/css/neo-sans-arabic'); 
+
+$font-family-sans-serif: "Raleway", "Neo Sans Arabic", sans-serif !default;
 $presentation-font-size-root: 36px;
 
-$presentation-heading-font: "Avenir Next Variable", sans-serif !default;
+$presentation-heading-font: "Raleway", sans-serif !default;
 $presentation-heading-color: kaust(bla) !default;
 $presentation-heading-font-weight: 200;
 //$presentation-heading-line-height: 2;
 //$presentation-block-margin: 28px;
 
-// colors
+// Colors
 //$body-bg: #f0f1eb !default;
 $body-color: kaust(bla) !default;
-$link-color: kaust(blu, nshd) !default;
+$link-color: kaust(tur, satsh) !default;
 $selection-bg: kaust(tur) !default;
 
 /*-- scss:rules --*/
@@ -97,13 +92,13 @@ $selection-bg: kaust(tur) !default;
   width: 90%;
 
   .title {
-    color: kaust(org, satsh);
+    color: kaust(gry, nshd);
     font-size: 1.4em;
     font-weight: 400;
   }
 
   .subtitle {
-    color: kaust(org, nshd);
+    color: kaust(gry, nshd);
     font-style: italic;
     margin-top: 0;
     margin-bottom: 0;
@@ -126,7 +121,7 @@ $selection-bg: kaust(tur) !default;
 
   .date {
     margin-top: 0.25em;
-    color: kaust(org, satsh);
+    color: kaust(gry, nshd);
   }
 
   .author,
@@ -149,7 +144,7 @@ $selection-bg: kaust(tur) !default;
 }
 
 .reveal h1 {
-  font-weight: 300;
+  font-weight: 400 !important;
 }
 
 .reveal h2 {
@@ -159,7 +154,7 @@ $selection-bg: kaust(tur) !default;
 }
 
 .reveal h3 {
-  color: kaust(tur);
+  color: kaust(tur, sat);
   font-style: italic;
   font-weight: 350;
   font-size: 1em;
@@ -204,7 +199,7 @@ $selection-bg: kaust(tur) !default;
 
   li::marker {
     // color: mix($ubdblue, white, 70%);/**/
-    color: kaust(blu, nshd);
+    color: kaust(gry, nshd);
   }
 }
 
@@ -217,7 +212,7 @@ $selection-bg: kaust(tur) !default;
   li:before {
     content: $whitecircle;
     // color: mix($ubdblue, white, 60%);
-    color: kaust(blu, nshd);
+    color: kaust(gry, nshd);
     display: inline-block;
     width: 0.3em;
     margin-left: -1.2em;
@@ -235,7 +230,7 @@ $selection-bg: kaust(tur) !default;
   margin-bottom: 0;
 
   li::marker {
-    color: kaust(blu, nshd);
+    color: kaust(gry, nshd);
   }
 }
 
@@ -245,7 +240,7 @@ $selection-bg: kaust(tur) !default;
   margin-bottom: 0;
   
   li::marker {
-    color: kaust(blu, nshd);
+    color: kaust(gry, nshd);
   }
 }
 
@@ -268,8 +263,8 @@ $selection-bg: kaust(tur) !default;
 
 .reveal .slide-chalkboard-buttons {
   position: fixed;
-  bottom: 17px !important;
-  right: 28px !important;
+  bottom: 12px !important;
+  right: 35px !important;
   display: flex;
   justify-content: flex-end;
   align-items: flex-start;
@@ -281,7 +276,6 @@ $selection-bg: kaust(tur) !default;
 }
 
 // Beamer-style button link environment
-
 .button {
   display: inline-block;
   padding: 6px 12px;
@@ -293,8 +287,8 @@ $selection-bg: kaust(tur) !default;
   white-space: nowrap;
   vertical-align: middle;
   cursor: pointer;
-  background-color: kaust(blu);
-  border: 1px solid kaust(bla);
+  background-color: kaust(tur, satsh);
+  border: 1px solid kaust(tur, satsh);
   color: #fff !important;
   text-decoration: none;
   border-radius: 4px;
@@ -302,8 +296,8 @@ $selection-bg: kaust(tur) !default;
 }
 
 .button:hover {
-  background-color: #0056b3;
-  border-color: #0056b3;
+  background-color: kaust(tur);
+  border-color: kaust(tur);
 }
 
 .button::before {
@@ -340,8 +334,8 @@ $selection-bg: kaust(tur) !default;
   left: unset !important;
   top: 0px !important;
   right: 10px !important;
-  max-height: 15% !important;
-  min-height: 15% !important;
+  max-height: 9% !important;
+  min-height: 9% !important;
 }
 
 // Slide numbers
@@ -362,7 +356,7 @@ $selection-bg: kaust(tur) !default;
 .reveal .slides code{
   font-size: 0.9em;
   color: kaust(bla);
-  background-color: mix(kaust(blu, nshd), white, 40%);
+  background-color: mix(kaust(gry, neu), white, 35%);
   padding: 0.05em;
   border-radius: 5px;  
 }
@@ -394,9 +388,9 @@ div.cell-output.cell-output-stdout > pre > code {
   height: 1.5%;
 }
 
-// Convenient transition slides
+// Transition slide
 .reveal .transition-slide {
-  background-color: kaust(blu);
+  background-color: kaust(gry, neu);
 }
 
 // Make math fonts smaller
@@ -414,7 +408,12 @@ span.math.inline, span.math.display {
   //margin-bottom: -0.2em;
 }
 
+.aside-footnotes {
+  color: kaust(gry, nshd);
+}
+
 .reveal aside {
+  color: kaust(yel);
   position: absolute;
   top: 690px;
   left: 25px;
